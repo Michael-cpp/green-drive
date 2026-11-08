@@ -1,4 +1,4 @@
-# GreenDrive
+# Green Drive
 
 A circuit-level TS808-style overdrive plugin (VST3 and standalone), built with JUCE.
 
