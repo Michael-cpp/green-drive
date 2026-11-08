@@ -215,7 +215,7 @@ void drawSilkscreen (juce::Graphics& g, const Layout& l)
     g.drawText ("INPUT CAL", l.calibration.translated (-78, 0).withWidth (70), juce::Justification::centredRight);
 
     g.setFont (faceFont (34.0f));
-    g.drawText ("GreenDrive", 0, 236, l.width, 42, juce::Justification::centred);
+    g.drawText ("Green Drive", 0, 236, l.width, 42, juce::Justification::centred);
     g.setFont (faceFont (14.0f, false));
     g.drawText ("O V E R D R I V E", 0, 276, l.width, 20, juce::Justification::centred);
 }

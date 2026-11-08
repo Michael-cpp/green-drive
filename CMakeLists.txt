@@ -17,7 +17,7 @@ juce_add_plugin(GreenDrive
     PLUGIN_MANUFACTURER_CODE Grdv
     PLUGIN_CODE Grdr
     FORMATS VST3 Standalone
-    PRODUCT_NAME "GreenDrive"
+    PRODUCT_NAME "Green Drive"
     IS_SYNTH FALSE
     NEEDS_MIDI_INPUT FALSE
     NEEDS_MIDI_OUTPUT FALSE

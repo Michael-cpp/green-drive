@@ -22,7 +22,7 @@ public:
     bool hasEditor() const override { return true; }
     juce::AudioProcessorParameter* getBypassParameter() const override { return params.getParameter ("bypass"); }
 
-    const juce::String getName() const override { return "GreenDrive"; }
+    const juce::String getName() const override { return "Green Drive"; }
     bool acceptsMidi() const override { return false; }
     bool producesMidi() const override { return false; }
     double getTailLengthSeconds() const override { return 0.0; }
