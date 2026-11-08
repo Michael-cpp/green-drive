@@ -7,10 +7,15 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
 {
     using Float = juce::AudioParameterFloat;
     using Id = juce::ParameterID;
+    // Knobs store 0..1 but read 0..10.
+    const auto dial = juce::AudioParameterFloatAttributes()
+                          .withStringFromValueFunction ([] (float v, int) { return juce::String (v * 10.0f, 1); })
+                          .withValueFromStringFunction ([] (const juce::String& s) { return juce::jlimit (0.0f, 1.0f, s.getFloatValue() / 10.0f); });
+
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
-    layout.add (std::make_unique<Float> (Id { "drive", 1 }, "Drive", 0.0f, 1.0f, 0.5f));
-    layout.add (std::make_unique<Float> (Id { "tone", 1 }, "Tone", 0.0f, 1.0f, 0.5f));
-    layout.add (std::make_unique<Float> (Id { "level", 1 }, "Level", 0.0f, 1.0f, 0.5f));
+    layout.add (std::make_unique<Float> (Id { "drive", 1 }, "Drive", juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f, dial));
+    layout.add (std::make_unique<Float> (Id { "tone", 1 }, "Tone", juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f, dial));
+    layout.add (std::make_unique<Float> (Id { "level", 1 }, "Level", juce::NormalisableRange<float> (0.0f, 1.0f), 0.5f, dial));
     // Sets how hot the DAW signal looks to the circuit. Input is scaled by
     // this amount and output by its inverse. 0 dB means 0 dBFS = 1 V peak.
     layout.add (std::make_unique<Float> (Id { "calibration", 1 }, "Input Calibration",
